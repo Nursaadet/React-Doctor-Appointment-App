@@ -3,35 +3,45 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-function AddModal({ showModal, handleClose }) {
-  //   const [showModal, setShow] = useState(false);
-
-  //   const handleClose = () => setShow(false);
-  //   const handleShow = () => setShow(true);
+function AddModal({ showModal, handleClose, drName }) {
+  const [patientName, setPatientName] = useState("");
+  const [date, setDate] = useState("");
 
   return (
     <>
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal show={showModal} onHide={handleClose} size={"lg"}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Appointment for: {drName} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Patient Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter patient name" />
+              <Form.Control
+                type="text"
+                placeholder="Enter patient name"
+                onChange={(e) => setPatientName(e.target.value)}
+                value={patientName}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Date</Form.Label>
-              <Form.Control type="datetime-local" placeholder="Date" />
+              <Form.Control
+                type="datetime-local"
+                placeholder="Date"
+                onChange={(e) => setDate(e.target.value)}
+                value={date}
+              />
             </Form.Group>
 
             <div className="text-center">
               <Button variant="success" type="submit" className="me-2">
                 Save
               </Button>
-              <Button variant="danger" onClick={handleClose}>Close</Button>
+              <Button variant="danger" onClick={handleClose}>
+                Close
+              </Button>
             </div>
           </Form>
         </Modal.Body>
