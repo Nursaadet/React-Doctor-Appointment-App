@@ -14,7 +14,7 @@ const Doctors = () => {
           const { id, name, img, dep } = doctor;
           return (
             <Col xs={6} sm={4} lg={3}  key={id}>
-              <Image className="img-thumbnail doctor-img w-100" src={img} alt={name} />
+              <Image className="img-thumbnail doctor-img w-100 h-100" src={img} alt={name} />
               <h5>{name} </h5>
               <p>{dep}</p>
             </Col>
