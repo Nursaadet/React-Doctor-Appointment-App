@@ -3,7 +3,11 @@ import { doctorData } from "../helpers/data";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import AddModal from "./AddModal";
+import { useState } from "react";
+
 const Doctors = () => {
+  const [showModal, setShow] = useState(false);
   return (
     <Container>
       <h3 className="display-6 mb-3" style={{ color: "rgb(166, 18, 189)" }}>
@@ -13,14 +17,20 @@ const Doctors = () => {
         {doctorData.map((doctor) => {
           const { id, name, img, dep } = doctor;
           return (
-            <Col xs={6} sm={4} lg={3}  key={id}>
-              <Image className="img-thumbnail doctor-img w-100 h-100" src={img} alt={name} />
+            <Col xs={6} sm={4} lg={3} key={id}>
+              <Image
+                className="img-thumbnail doctor-img w-100 h-100"
+                src={img}
+                alt={name}
+                onClick={() => setShow(true)}
+              />
               <h5>{name} </h5>
               <p>{dep}</p>
             </Col>
           );
         })}
       </Row>
+      <AddModal showModal={showModal} handleClose={() => setShow(false)} />
     </Container>
   );
 };
