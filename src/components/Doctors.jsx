@@ -18,14 +18,16 @@ const Doctors = () => {
           const { id, name, img, dep } = doctor;
           return (
             <Col xs={6} sm={4} lg={3} key={id}>
-              <Image
-                className="img-thumbnail doctor-img w-100 h-100"
-                src={img}
-                alt={name}
-                onClick={() => setShow(true)}
-              />
-              <h5>{name} </h5>
-              <p>{dep}</p>
+              <div className="m-0 p-1">
+                <Image
+                  className="img-thumbnail doctor-img w-100 h-100 m-1"
+                  src={img}
+                  alt={name}
+                  onClick={() => setShow(true)}
+                />
+                <h5>{name} </h5>
+                <p>{dep}</p>
+              </div>
             </Col>
           );
         })}
