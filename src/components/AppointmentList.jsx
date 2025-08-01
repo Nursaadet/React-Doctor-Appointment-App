@@ -4,13 +4,16 @@ import Row from "react-bootstrap/Row";
 import { TiTickOutline, TiDelete } from "react-icons/ti";
 
 const AppointmentList = ({ apps, setApps }) => {
-  const handleDelete = (id) => {
-setApps(apps?.filter(appo=> appo.id !== id ))
-  };
-  const handleToggle = (id) =>{
-setApps(apps?.map(appo => appo.id === id ? {...appo,consulted: !appo.consulted} : appo ))
+  const newAppo = apps?.filter(appo => appo.id !== id)
+  setApps(newAppo)
+  localStorage.setItem("appointments", JSON.stringify(newAppo))
   } 
-   return (
+  const handleToggle = (id) =>{
+    const newAppo = apps?.map(appo => appo.id ===id ? {...appo, consulted: !appo.consulted} : appo);
+    setApps(newAppo)
+    localStorage.setItem("appointments",JSON.stringify(newAppo))
+  }
+  return (
     <Container className="p-2">
       <h3 className="display-6 mb-2" style={{ color: "rgb(166, 18, 189)" }}>
         Appointment List

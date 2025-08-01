@@ -11,6 +11,8 @@ const Doctors = ({ apps, setApps }) => {
   const [drName, setDrName] = useState("");
   const addAppointment = (newAppo) => {
 setApps([...apps, newAppo])
+
+localStorage.setItem("appointments", JSON.stringify([...apps, newAppo]))
   };
   return (
     <Container>
