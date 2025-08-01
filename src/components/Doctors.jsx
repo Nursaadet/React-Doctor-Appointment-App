@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import AddModal from "./AddModal";
 import { useState } from "react";
+import { addLocal } from "../helpers/utils";
 
 const Doctors = ({ apps, setApps }) => {
   const [showModal, setShow] = useState(false);
@@ -12,7 +13,7 @@ const Doctors = ({ apps, setApps }) => {
   const addAppointment = (newAppo) => {
 setApps([...apps, newAppo])
 
-localStorage.setItem("appointments", JSON.stringify([...apps, newAppo]))
+addLocal("appoinments", [...apps, newAppo])
   };
   return (
     <Container>
