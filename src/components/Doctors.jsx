@@ -6,9 +6,12 @@ import Image from "react-bootstrap/Image";
 import AddModal from "./AddModal";
 import { useState } from "react";
 
-const Doctors = () => {
+const Doctors = ({ apps, setApps }) => {
   const [showModal, setShow] = useState(false);
   const [drName, setDrName] = useState("");
+  const addAppointment = (newAppo) => {
+setApps([...apps, newAppo])
+  };
   return (
     <Container>
       <h3 className="display-6 mb-3" style={{ color: "rgb(166, 18, 189)" }}>
@@ -37,6 +40,7 @@ const Doctors = () => {
         showModal={showModal}
         handleClose={() => setShow(false)}
         drName={drName}
+        addAppointment= {addAppointment}
       />
     </Container>
   );
