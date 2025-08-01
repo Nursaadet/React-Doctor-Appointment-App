@@ -4,7 +4,13 @@ import Row from "react-bootstrap/Row";
 import { TiTickOutline, TiDelete } from "react-icons/ti";
 
 const AppointmentList = ({ apps, setApps }) => {
-  return (
+  const handleDelete = (id) => {
+setApps(apps?.filter(appo=> appo.id !== id ))
+  };
+  const handleToggle = (id) =>{
+setApps(apps?.map(appo => appo.id === id ? {...appo,consulted: !appo.consulted} : appo ))
+  } 
+   return (
     <Container className="p-2">
       <h3 className="display-6 mb-2" style={{ color: "rgb(166, 18, 189)" }}>
         Appointment List
@@ -27,13 +33,17 @@ const AppointmentList = ({ apps, setApps }) => {
               <h5>Time: {new Date(day).toLocaleTimeString()}</h5>
             </Col>
             <Col className="text-end">
-              <TiTickOutline type="button" className="text-success display-2" />
-              <TiDelete type="button" className="text-danger display-2" />
+              <TiTickOutline type="button" className="text-success display-2" onClick={()=> handleToggle(id)}/>
+              <TiDelete
+                type="button"
+                className="text-danger display-2"
+                onClick={() => handleDelete(id)}
+              />
             </Col>
           </Row>
         ))
       ) : (
-        <img src="./img/appointment.jpg" alt="No Appointments" />
+        <img src="./img/appointment.jpg"  width="70%" alt="No Appointments" />
       )}
     </Container>
   );
