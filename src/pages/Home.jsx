@@ -10,7 +10,7 @@ const Home = () => {
     <main className="text-center mt-2">
       <h1 className="display-5 text-danger">SAADET HOSPITAL</h1>
       <Doctors setApps={setAppointments} apps={Appointments} />
-      <AppointmentList />
+      <AppointmentList apps={Appointments}  setApps={setAppointments}/>
     </main>
   );
 };
